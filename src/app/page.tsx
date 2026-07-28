@@ -18,7 +18,7 @@ export default function Home() {
         />
         <div className={styles.intro}>
           <div className={styles.intro}>
-            <h3>Next.js 앱서비스 배포1</h3>
+            <h3>Next.js 앱서비스 배포 - 스테이징</h3>
             <ol>
               <li>API_URL: {apiUrl}</li>
               <li>BLOB_URL: {blobUrl}</li>
