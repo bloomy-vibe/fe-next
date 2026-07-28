@@ -27,7 +27,7 @@ jobs:
       - name: Build (standalone)
         run: npm run build
         env:
-          NEXT_PUBLIC_API_URL: ${{ secrets.API_URL }}
+          NEXT_PUBLIC_API_URL: ${{ secrets.API_URL }} # client 사이드에서 NEXT_PUBLIC 으로 시작
           NEXT_PUBLIC_BLOB_URL: ${{ secrets.BLOB_URL }}
 
       - name: Assemble standalone deployment package
@@ -61,9 +61,9 @@ jobs:
         uses: azure/webapps-deploy@v3
         with:
           app-name: fe-next-sl
-          slot-name: 'Production'
+          slot-name: 'Staging'
           package: release.zip
           # 시작 명령은 Azure Portal > App Service > 구성 > 일반 설정 >
           # 시작 명령에 `node server.js` 로 설정해 둘 것.
           # (startup-command 입력은 publish-profile 인증에서는 동작하지 않음)
-          publish-profile: ${{ secrets.FE_PUBLISH_PROFILE }}
+          publish-profile: ${{ secrets.FE_STAGING_PROFILE }}
